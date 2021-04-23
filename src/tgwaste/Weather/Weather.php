@@ -136,7 +136,7 @@ class Weather {
 			return;
 		}
 
-		foreach(Main::$instance->getServer()->getWorldManager()->getWorlds() as $world) {
+		foreach (Main::$instance->getServer()->getWorldManager()->getWorlds() as $world) {
 			if ($this->isAlwaysClear($world) == true) {
 				continue;
 			}
