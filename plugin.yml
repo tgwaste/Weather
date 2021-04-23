@@ -1,0 +1,9 @@
+name: Weather
+version: 1.0.0
+main: tgwaste\Weather\Main
+api: 4.0.0
+author: tgwaste
+commands:
+  weather:
+    usage: "/weather <clear rain thunder status>"
+    description: "Weather Commands"

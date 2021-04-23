@@ -1,0 +1,22 @@
+---
+# write weather changes and conditions to the console
+console: true
+# show lightning
+lightning: true
+# play thunder sounds
+thunder: true
+# the minimum amount of time for Clear conditions
+clearmin: 600
+# the maximum amount of time for Clear conditions
+clearmax: 2000
+# the minimum amount of time for Rain and Thunder conditions
+rainmin: 120
+# the maximum amount of time for Rain and Thunder conditions
+rainmax: 500
+# always start with Clear conditions when the server starts
+startclear: true
+# the weather will always be Clear in any worldname containing one of these strings
+alwaysclear:
+- lobby
+- arena
+...

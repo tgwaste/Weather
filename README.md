@@ -1,2 +1,4 @@
 # Weather
-Weather Plugin for PocketMine-MP Version 4
+<b>Weather Plugin For PocketMine-MP Version 4 (by tgwaste)<b>
+<br />
+<img src="https://github.com/tgwaste/Weather/blob/main/Weather/icon.png">
