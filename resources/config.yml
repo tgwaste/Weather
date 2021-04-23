@@ -1,6 +1,6 @@
 ---
 # write weather changes and conditions to the console
-console: true
+console: false
 # show lightning
 lightning: true
 # play thunder sounds
@@ -14,7 +14,7 @@ rainmin: 120
 # the maximum amount of time for Rain and Thunder conditions
 rainmax: 500
 # always start with Clear conditions when the server starts
-startclear: true
+startclear: false
 # the weather will always be Clear in any worldname containing one of these strings
 alwaysclear:
 - lobby
