@@ -3,8 +3,7 @@
 <br />
 <img src="https://github.com/tgwaste/Weather/blob/main/icon.png">
 <br />
-<b>Instructions:<b>
-<br />
+## Instructions:
 <br />
 This should just work.
 <br />
