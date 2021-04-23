@@ -21,10 +21,8 @@ class Listen implements Listener {
 		$player = $event->getEntity();
 		$world = $event->getTo()->world;
 
-		if (!$player instanceof Player) {
-			return;
+		if ($player instanceof Player) {
+			(new Weather)->sendWeatherToPlayer($player, $world);
 		}
-
-		(new Weather)->sendWeatherToPlayer($player, $world);
 	}
 }
