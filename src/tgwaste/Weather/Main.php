@@ -38,6 +38,7 @@ class Main extends PluginBase implements Listener {
 
 		$this->getScheduler()->scheduleRepeatingTask(new Schedule(), 20);
 		$this->getServer()->getPluginManager()->registerEvents(new Listen(), $this);
+		$this->getServer()->getLogger()->info((new Weather)->weatherStatus());
 	}
 
 	public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool {
@@ -52,16 +53,19 @@ class Main extends PluginBase implements Listener {
 
 		if ($args[0] === "clear") {
 			(new Weather)->switchWeather(Main::CLEAR);
+			$sender->sendMessage((new Weather)->weatherStatus());
 			return true;
 		}
 
 		if ($args[0] === "rain") {
 			(new Weather)->switchWeather(Main::MODERATE_RAIN);
+			$sender->sendMessage((new Weather)->weatherStatus());
 			return true;
 		}
 
 		if ($args[0] === "thunder") {
 			(new Weather)->switchWeather(Main::MODERATE_THUNDER);
+			$sender->sendMessage((new Weather)->weatherStatus());
 			return true;
 		}
 
