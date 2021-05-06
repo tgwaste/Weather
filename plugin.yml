@@ -6,4 +6,4 @@ author: tgwaste
 commands:
   weather:
     usage: "/weather <clear rain thunder status>"
-    description: "Weather Commands"
+    description: "Weather commands"
