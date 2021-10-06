@@ -7,3 +7,4 @@ commands:
   weather:
     usage: "/weather <clear rain thunder status>"
     description: "Weather commands"
+    permission: pocketmine.group.operator
