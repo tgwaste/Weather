@@ -11,6 +11,7 @@ use pocketmine\network\mcpe\NetworkSession;
 use pocketmine\network\mcpe\protocol\AddActorPacket;
 use pocketmine\network\mcpe\protocol\LevelEventPacket;
 use pocketmine\network\mcpe\protocol\PlaySoundPacket;
+use pocketmine\network\mcpe\protocol\types\LevelEvent;
 use pocketmine\network\mcpe\protocol\types\entity\EntityIds;
 use pocketmine\player\Player;
 use pocketmine\world\World;
@@ -48,10 +49,10 @@ class Weather {
 		$conds = [0, 5000, 30000, 100000, 5000, 30000, 100000];
 
 		# defaults
-		$pks[0]->evid = LevelEventPacket::EVENT_STOP_RAIN;
-		$pks[0]->data = 0;
-		$pks[1]->evid = LevelEventPacket::EVENT_STOP_THUNDER;
-		$pks[1]->data = 0;
+		$pks[0]->eventId = LevelEvent::STOP_RAIN;
+		$pks[0]->eventData = 0;
+		$pks[1]->eventId = LevelEvent::STOP_THUNDER;
+		$pks[1]->eventData = 0;
 
 		if ($this->isAlwaysClear($world) == true) {
 			# skies are always clear
@@ -59,15 +60,15 @@ class Weather {
 		}
 
 		if (Main::$instance->weather > Main::CLEAR) {
-			$pks[0]->evid = LevelEventPacket::EVENT_START_RAIN;
-			$pks[0]->data = $conds[Main::$instance->weather];
-			$pks[1]->evid = LevelEventPacket::EVENT_STOP_THUNDER;
-			$pks[1]->data = 0;
+			$pks[0]->eventId = LevelEvent::START_RAIN;
+			$pks[0]->eventData = $conds[Main::$instance->weather];
+			$pks[1]->eventId = LevelEvent::STOP_THUNDER;
+			$pks[1]->eventData = 0;
 		}
 
 		if (Main::$instance->weather >= Main::LIGHT_THUNDER) {
-			$pks[1]->evid = LevelEventPacket::EVENT_START_THUNDER;
-			$pks[1]->data = $conds[Main::$instance->weather];
+			$pks[1]->eventId = LevelEvent::START_THUNDER;
+			$pks[1]->eventData = $conds[Main::$instance->weather];
 		}
 
 		return $pks;
