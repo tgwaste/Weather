@@ -7,3 +7,5 @@
 This should just work.
 <br />
 There are a few options in config.yml.
+<br />
+[![](https://poggit.pmmp.io/shield.state/Weather)](https://poggit.pmmp.io/p/Weather)
