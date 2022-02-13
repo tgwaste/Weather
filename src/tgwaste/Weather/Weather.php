@@ -156,18 +156,12 @@ class Weather {
 			$z = (int)$location->z + $dist[mt_rand(0, 1)];
 			$y = $world->getHighestBlockAt((int)$x, (int)$z);
 
-			$pk = new AddActorPacket();
-			$pk->type = EntityIds::LIGHTNING_BOLT;
-			$pk->entityRuntimeId = Entity::nextRuntimeId();
-			$pk->metadata = array();
-			$pk->motion = $player->getMotion();
-			$pk->yaw = $location->getYaw();
-			$pk->pitch = $location->getPitch();
-			$pk->position = new Vector3($x, $y, $z);
+			$vec = new Vector3($x, $y, $z);
 
-			foreach ($world->getPlayers() as $player) {
-				$player->getNetworkSession()->sendDataPacket($pk);
-			}
+			$light = AddActorPacket::create(Entity::nextRuntimeId(), 1, "minecraft:lightning_bolt", $vec, null, 0, 0, 0.0, [], [], []);
+			$sound = PlaySoundPacket::create("ambient.weather.thunder", $x, $y, $z, 1, 1);
+
+			Main::$instance->getServer()->broadcastPackets($player->getWorld()->getPlayers(), [$light, $sound]);
 		}
 	}
 
