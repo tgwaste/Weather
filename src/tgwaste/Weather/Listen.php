@@ -14,7 +14,7 @@ class Listen implements Listener {
 		$player = $event->getPlayer();
 		$world = $player->getWorld();
 
-		(new Weather)->sendWeatherToPlayer($player, $world);
+		Main::$instance->weatherobj->sendWeatherToPlayer($player, $world);
 	}
 
 	public function onEntityTeleportEvent(EntityTeleportEvent $event) {
@@ -22,7 +22,7 @@ class Listen implements Listener {
 		$world = $event->getTo()->world;
 
 		if ($player instanceof Player) {
-			(new Weather)->sendWeatherToPlayer($player, $world);
+			Main::$instance->weatherobj->sendWeatherToPlayer($player, $world);
 		}
 	}
 }

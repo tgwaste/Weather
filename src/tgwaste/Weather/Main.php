@@ -16,6 +16,7 @@ class Main extends PluginBase implements Listener {
 
 	public $timer;
 	public $weather;
+	public $weatherobj;
 
 	public const CLEAR = 0;
 	public const LIGHT_RAIN = 1;
@@ -29,16 +30,17 @@ class Main extends PluginBase implements Listener {
 		self::$instance = $this;
 
 		$this->saveDefaultConfig();
+		$this->weatherobj = (new Weather);
 
 		if ($this->getConfig()->get("startclear") == true) {
-			(new Weather)->switchWeather(Main::CLEAR);
+			$this->weatherobj->switchWeather(Main::CLEAR);
 		} else {
-			(new Weather)->switchWeather(mt_rand(Main::CLEAR, Main::HEAVY_THUNDER));
+			$this->weatherobj->switchWeather(mt_rand(Main::CLEAR, Main::HEAVY_THUNDER));
 		}
 
 		$this->getScheduler()->scheduleRepeatingTask(new Schedule(), 20);
 		$this->getServer()->getPluginManager()->registerEvents(new Listen(), $this);
-		$this->getServer()->getLogger()->info((new Weather)->weatherStatus());
+		$this->getServer()->getLogger()->info($this->weatherobj->weatherStatus());
 	}
 
 	public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool {
@@ -52,25 +54,25 @@ class Main extends PluginBase implements Listener {
 		}
 
 		if ($args[0] === "clear") {
-			(new Weather)->switchWeather(Main::CLEAR);
-			$sender->sendMessage((new Weather)->weatherStatus());
+			$this->weatherobj->switchWeather(Main::CLEAR);
+			$sender->sendMessage($this->weatherobj->weatherStatus());
 			return true;
 		}
 
 		if ($args[0] === "rain") {
-			(new Weather)->switchWeather(Main::MODERATE_RAIN);
-			$sender->sendMessage((new Weather)->weatherStatus());
+			$this->weatherobj->switchWeather(Main::MODERATE_RAIN);
+			$sender->sendMessage($this->weatherobj->weatherStatus());
 			return true;
 		}
 
 		if ($args[0] === "thunder") {
-			(new Weather)->switchWeather(Main::MODERATE_THUNDER);
-			$sender->sendMessage((new Weather)->weatherStatus());
+			$this->weatherobj->switchWeather(Main::MODERATE_THUNDER);
+			$sender->sendMessage($this->weatherobj->weatherStatus());
 			return true;
 		}
 
 		if ($args[0] === "status") {
-			$sender->sendMessage((new Weather)->weatherStatus());
+			$sender->sendMessage($this->weatherobj->weatherStatus());
 			return true;
 		}
 

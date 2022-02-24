@@ -12,13 +12,13 @@ class Schedule extends Task {
 
 		if (Main::$instance->weather >= Main::LIGHT_THUNDER) {
 			if (mt_rand(1, 100) >= 95) {
-				(new Weather)->sendLightning();
-				(new Weather)->playThunder();
+				Main::$instance->weatherobj->sendLightning();
+				Main::$instance->weatherobj->playThunder();
 			}
 		}
 
 		if (!Main::$instance->timer) {
-			(new Weather)->switchWeather(-1);
+			Main::$instance->weatherobj->switchWeather(-1);
 		}
 	}
 }

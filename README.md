@@ -4,7 +4,7 @@
 <img src="https://github.com/tgwaste/Weather/blob/main/icon.png">
 <br />
 ## Instructions
-This should just work.
+This works mostly like vanilla.
 <br />
 There are a few options in config.yml.
 <br />
