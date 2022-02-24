@@ -3,10 +3,13 @@
 <br />
 <img src="https://github.com/tgwaste/Weather/blob/main/icon.png">
 <br />
-## Instructions
-This works mostly like vanilla.
 <br />
-There are a few options in config.yml.
+## About
+This will add vanilla like weather to your PM4 worlds.
 <br />
+* The in-game weather menu works
+* You can do /weather clear|rain|thunder from in-game or console
+* You can set worlds to always be clear
+* There are a few other config options in config.yml
 <br />
 [![](https://poggit.pmmp.io/shield.state/Weather)](https://poggit.pmmp.io/p/Weather)
