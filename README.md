@@ -12,4 +12,4 @@ This will add vanilla like weather to your PM4 worlds.
 * You can set worlds to always be clear
 * There are a few other config options in config.yml
 <br />
-[![](https://poggit.pmmp.io/shield.state/Weather)](https://poggit.pmmp.io/p/Weather)
+<a href="https://poggit.pmmp.io/p/Weather"><img src="https://poggit.pmmp.io/shield.state/Weather"></a>
