@@ -147,14 +147,19 @@ class Weather {
 			if (count($players) < 1)
 				continue;
 
-			$dist = [-64, 64];
+			$dist1 = [-64, 64];
+			$dist2 = [8, -8];
 
 			$player = $players[array_rand($players)];
 			$location = $player->getLocation();
 
-			$x = (int)$location->x + $dist[mt_rand(0, 1)];
-			$z = (int)$location->z + $dist[mt_rand(0, 1)];
+			$x = (int)$location->x + $dist1[mt_rand(0, 1)];
+			$z = (int)$location->z + $dist2[mt_rand(0, 1)];
 			$y = $world->getHighestBlockAt((int)$x, (int)$z);
+
+			if ($y === null) {
+				return;
+			}
 
 			$vec = new Vector3($x, $y, $z);
 
@@ -235,6 +240,6 @@ class Weather {
 
 		$condition = $this->weatherConditionName(Main::$instance->weather);
 
-		return "Weather conditions §d$condition §f($mins mins $secs secs)";
+		return "Weather conditions §d$condition §f(for $mins mins $secs secs)";
 	}
 }
