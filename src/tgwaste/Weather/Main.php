@@ -40,7 +40,10 @@ class Main extends PluginBase implements Listener {
 
 		$this->getScheduler()->scheduleRepeatingTask(new Schedule(), 20);
 		$this->getServer()->getPluginManager()->registerEvents(new Listen(), $this);
-		$this->getServer()->getLogger()->info($this->weatherobj->weatherStatus());
+
+		if ($this->getConfig()->get("console") == true) {
+			$this->getServer()->getLogger()->info($this->weatherobj->weatherStatus());
+		}
 	}
 
 	public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool {
