@@ -42,7 +42,7 @@ class Main extends PluginBase implements Listener {
 		$this->getServer()->getPluginManager()->registerEvents(new Listen(), $this);
 
 		if ($this->getConfig()->get("console") == true) {
-			$this->getServer()->getLogger()->info($this->weatherobj->weatherStatus());
+			$this->getServer()->getLogger()->info($this->weatherobj->weatherQuery());
 		}
 	}
 
@@ -58,24 +58,24 @@ class Main extends PluginBase implements Listener {
 
 		if ($args[0] === "clear") {
 			$this->weatherobj->switchWeather(Main::CLEAR);
-			$sender->sendMessage($this->weatherobj->weatherStatus());
+			$sender->sendMessage($this->weatherobj->weatherQuery());
 			return true;
 		}
 
 		if ($args[0] === "rain") {
 			$this->weatherobj->switchWeather(Main::MODERATE_RAIN);
-			$sender->sendMessage($this->weatherobj->weatherStatus());
+			$sender->sendMessage($this->weatherobj->weatherQuery());
 			return true;
 		}
 
 		if ($args[0] === "thunder") {
 			$this->weatherobj->switchWeather(Main::MODERATE_THUNDER);
-			$sender->sendMessage($this->weatherobj->weatherStatus());
+			$sender->sendMessage($this->weatherobj->weatherQuery());
 			return true;
 		}
 
-		if ($args[0] === "status") {
-			$sender->sendMessage($this->weatherobj->weatherStatus());
+		if ($args[0] === "query" or $args[0] === "status") {
+			$sender->sendMessage($this->weatherobj->weatherQuery());
 			return true;
 		}
 

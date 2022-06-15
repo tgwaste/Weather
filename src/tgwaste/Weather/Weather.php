@@ -40,7 +40,7 @@ class Weather {
 		$this->weatherTimer();
 
 		if (Main::$instance->getConfig()->get("console") == true) {
-			Main::$instance->getServer()->getLogger()->info($this->weatherStatus());
+			Main::$instance->getServer()->getLogger()->info($this->weatherQuery());
 		}
 	}
 
@@ -229,7 +229,7 @@ class Weather {
 		return $conditions[$condition];
 	}
 
-	public function weatherStatus() {
+	public function weatherQuery() {
 		$mins = 0;
 		$secs = Main::$instance->timer;
 

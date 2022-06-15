@@ -5,7 +5,7 @@ api: 4.0.0
 author: tgwaste
 commands:
   weather:
-    usage: "/weather <clear|rain|thunder|status>"
+    usage: "/weather <clear|rain|thunder|query>"
     description: "Weather commands"
     permission: weather.operator
 permissions:
