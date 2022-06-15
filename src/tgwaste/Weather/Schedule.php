@@ -18,7 +18,7 @@ class Schedule extends Task {
 		}
 
 		if (!Main::$instance->timer) {
-			Main::$instance->weatherobj->switchWeather(-1);
+			Main::$instance->weatherobj->switchWeather(-1, 0);
 		}
 	}
 }

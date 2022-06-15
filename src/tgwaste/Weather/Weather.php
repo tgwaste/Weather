@@ -17,7 +17,7 @@ use pocketmine\player\Player;
 use pocketmine\world\World;
 
 class Weather {
-	public function switchWeather(int $condition) {
+	public function switchWeather(int $condition, int $duration=0) {
 		if ($condition > -1) {
 			Main::$instance->weather = $condition;
 		}
@@ -37,7 +37,7 @@ class Weather {
 			$this->sendLightning();
 		}
 
-		$this->weatherTimer();
+		$this->weatherTimer($duration);
 
 		if (Main::$instance->getConfig()->get("console") == true) {
 			Main::$instance->getServer()->getLogger()->info($this->weatherQuery());
@@ -187,7 +187,12 @@ class Weather {
 		return false;
 	}
 
-	public function weatherTimer() {
+	public function weatherTimer(int $duration=0) {
+		if ($duration > 0) {
+			Main::$instance->timer = $duration;
+			return;
+		}
+
 		if (Main::$instance->weather == Main::CLEAR) {
 			$min = Main::$instance->getConfig()->get("clearmin");
 			$max = Main::$instance->getConfig()->get("clearmax");

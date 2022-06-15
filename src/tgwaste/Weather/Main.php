@@ -33,9 +33,9 @@ class Main extends PluginBase implements Listener {
 		$this->weatherobj = (new Weather);
 
 		if ($this->getConfig()->get("startclear") == true) {
-			$this->weatherobj->switchWeather(Main::CLEAR);
+			$this->weatherobj->switchWeather(Main::CLEAR, 0);
 		} else {
-			$this->weatherobj->switchWeather(mt_rand(Main::CLEAR, Main::HEAVY_THUNDER));
+			$this->weatherobj->switchWeather(mt_rand(Main::CLEAR, Main::HEAVY_THUNDER), 0);
 		}
 
 		$this->getScheduler()->scheduleRepeatingTask(new Schedule(), 20);
@@ -56,20 +56,26 @@ class Main extends PluginBase implements Listener {
 			return false;
 		}
 
+		if (count($args) > 1) {
+			$duration = (int)$args[1];
+		} else {
+			$duration = 0;
+		}
+
 		if ($args[0] === "clear") {
-			$this->weatherobj->switchWeather(Main::CLEAR);
+			$this->weatherobj->switchWeather(Main::CLEAR, $duration);
 			$sender->sendMessage($this->weatherobj->weatherQuery());
 			return true;
 		}
 
 		if ($args[0] === "rain") {
-			$this->weatherobj->switchWeather(Main::MODERATE_RAIN);
+			$this->weatherobj->switchWeather(Main::MODERATE_RAIN, $duration);
 			$sender->sendMessage($this->weatherobj->weatherQuery());
 			return true;
 		}
 
 		if ($args[0] === "thunder") {
-			$this->weatherobj->switchWeather(Main::MODERATE_THUNDER);
+			$this->weatherobj->switchWeather(Main::MODERATE_THUNDER, $duration);
 			$sender->sendMessage($this->weatherobj->weatherQuery());
 			return true;
 		}
