@@ -163,7 +163,7 @@ class Weather {
 
 			$vec = new Vector3($x, $y, $z);
 
-			$light = AddActorPacket::create(Entity::nextRuntimeId(), 1, "minecraft:lightning_bolt", $vec, null, 0, 0, 0.0, [], [], []);
+			$light = AddActorPacket::create(Entity::nextRuntimeId(), 1, "minecraft:lightning_bolt", $vec, null, 0, 0, 0.0, 0.0, [], [], []);
 			$sound = PlaySoundPacket::create("ambient.weather.thunder", $x, $y, $z, 1, 1);
 
 			Main::$instance->getServer()->broadcastPackets($player->getWorld()->getPlayers(), [$light, $sound]);
