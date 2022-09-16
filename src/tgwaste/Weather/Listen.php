@@ -13,14 +13,12 @@ class Listen implements Listener {
 	public function onPlayerJoinEvent(PlayerJoinEvent $event) {
 		$player = $event->getPlayer();
 		$world = $player->getWorld();
-
 		Main::$instance->weatherobj->sendWeatherToPlayer($player, $world);
 	}
 
 	public function onEntityTeleportEvent(EntityTeleportEvent $event) {
 		$player = $event->getEntity();
 		$world = $event->getTo()->world;
-
 		if ($player instanceof Player) {
 			Main::$instance->weatherobj->sendWeatherToPlayer($player, $world);
 		}
