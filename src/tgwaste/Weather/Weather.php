@@ -13,6 +13,7 @@ use pocketmine\network\mcpe\protocol\LevelEventPacket;
 use pocketmine\network\mcpe\protocol\PlaySoundPacket;
 use pocketmine\network\mcpe\protocol\types\LevelEvent;
 use pocketmine\network\mcpe\protocol\types\entity\EntityIds;
+use pocketmine\network\mcpe\protocol\types\entity\PropertySyncData;
 use pocketmine\player\Player;
 use pocketmine\world\World;
 
@@ -164,7 +165,7 @@ class Weather {
 			$eid = Entity::nextRuntimeId();
 			$vec = new Vector3($x, $y, $z);
 
-			$light = AddActorPacket::create($eid, $eid, "minecraft:lightning_bolt", $vec, null, 0, 0, 0.0, 0.0, [], [], []);
+			$light = AddActorPacket::create($eid, $eid, "minecraft:lightning_bolt", $vec, null, 0, 0, 0.0, 0.0, [], [], new PropertySyncData([], []), []);
 			$sound = PlaySoundPacket::create("ambient.weather.thunder", $x, $y, $z, 1, 1);
 
 			Main::$instance->getServer()->broadcastPackets($players, [$light, $sound]);
