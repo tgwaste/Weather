@@ -1,5 +1,5 @@
 name: Weather
-version: 2.0.1
+version: 2.0.2
 main: tgwaste\Weather\Main
 api: 5.0.0
 author: tgwaste

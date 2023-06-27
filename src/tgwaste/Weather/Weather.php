@@ -7,6 +7,7 @@ namespace tgwaste\Weather;
 use pocketmine\entity\Entity;
 use pocketmine\entity\EntityDataHelper;
 use pocketmine\math\Vector3;
+use pocketmine\network\mcpe\NetworkBroadcastUtils;
 use pocketmine\network\mcpe\NetworkSession;
 use pocketmine\network\mcpe\protocol\AddActorPacket;
 use pocketmine\network\mcpe\protocol\LevelEventPacket;
@@ -168,7 +169,7 @@ class Weather {
 			$light = AddActorPacket::create($eid, $eid, "minecraft:lightning_bolt", $vec, null, 0, 0, 0.0, 0.0, [], [], new PropertySyncData([], []), []);
 			$sound = PlaySoundPacket::create("ambient.weather.thunder", $x, $y, $z, 1, 1);
 
-			Main::$instance->getServer()->broadcastPackets($players, [$light, $sound]);
+			NetworkBroadcastUtils::broadcastPackets($players, [$light, $sound]);
 		}
 	}
 
