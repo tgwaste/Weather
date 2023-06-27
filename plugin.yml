@@ -1,7 +1,7 @@
 name: Weather
 version: 1.0.10
 main: tgwaste\Weather\Main
-api: 4.0.0
+api: 5.0.0
 author: tgwaste
 commands:
   weather:

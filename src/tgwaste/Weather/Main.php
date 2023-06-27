@@ -47,9 +47,15 @@ class Main extends PluginBase implements Listener {
 	}
 
 	public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool {
-		$permission = $command->getPermission();
-
-		if (!$sender->hasPermission($permission) and !$sender->hasPermission(DefaultPermissions::ROOT_OPERATOR)) {
+		$permissions = $command->getPermissions();
+		$hasPermission = false;
+		foreach ($permissions as $permission) {
+			if ($sender->hasPermission($permission) or $sender->hasPermission(DefaultPermissions::ROOT_OPERATOR)) {
+				$hasPermission = true;
+				break;
+			}
+		}
+		if ($hasPermission == false) {
 			$sender->sendMessage("§cYou do not have permission to make weather changes§r");
 			return true;
 		}
