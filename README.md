@@ -1,11 +1,11 @@
 # Weather
-<b>Weather Plugin For PocketMine-MP Version 4 (by tgwaste)<b>
+<b>Weather Plugin For PocketMine-MP Version 5 (by tgwaste)<b>
 <br />
 <img src="https://github.com/tgwaste/Weather/blob/main/icon.png">
 <br />
 <br />
 ## About
-This will add vanilla like weather to your PM4 worlds.
+This will add vanilla like weather to your PM5 worlds.
 <br />
 * The in-game weather menu works
 * You can do /weather clear|rain|thunder from in-game or console
