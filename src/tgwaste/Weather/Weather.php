@@ -157,6 +157,11 @@ class Weather {
 
 			$x = (int)$location->x + $dist1[mt_rand(0, 1)];
 			$z = (int)$location->z + $dist2[mt_rand(0, 1)];
+
+			if (!$world->isChunkLoaded((int)$x, (int)$z) || !$world->isChunkLocked((int)$x, (int)$z)) {
+				return;
+			}
+
 			$y = $world->getHighestBlockAt((int)$x, (int)$z);
 
 			if ($y === null) {
